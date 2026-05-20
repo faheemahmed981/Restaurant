@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Zauq | Premium Dining & Delivery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --deep-gold: #aa8939;
+            --black: #050505;
+            --glass: rgba(212, 175, 55, 0.1);
+            --danger: #e74c3c;
+        }
+
+        body { font-family: 'Playfair Display', serif; margin: 0; background: var(--black); color: #fff; scroll-behavior: smooth; }
+        .gold-text { font-family: 'Cinzel', serif; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; }
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+        
+        nav { background: #111; padding: 20px; text-align: center; border-bottom: 2px solid var(--gold); position: sticky; top: 0; z-index: 1000; }
+        nav a { color: var(--gold); text-decoration: none; margin: 0 20px; font-weight: bold; cursor: pointer; }
+
+        .page-section { display: none; animation: fadeIn 0.5s ease; }
+        .active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        header { 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1350&q=80'); 
+            background-size: cover; height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 4px solid var(--gold);
+        }
+
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .menu-item { background: #111; border: 1px solid #222; padding: 20px; transition: 0.3s; position: relative; }
+        .menu-item:hover { border-color: var(--gold); background: var(--glass); }
+        .price-tag { color: var(--gold); font-weight: bold; margin-top: 10px; display: block; }
+
+        .royal-form { background: #111; padding: 30px; border: 2px solid var(--gold); margin-top: 20px; }
+        input, select, textarea { width: 100%; padding: 12px; margin: 10px 0; background: #222; border: 1px solid var(--deep-gold); color: white; border-radius: 5px; box-sizing: border-box; }
+        button { background: var(--gold); color: #000; padding: 15px; width: 100%; border: none; font-weight: bold; cursor: pointer; font-family: 'Cinzel'; transition: 0.3s; }
+        button:hover { background: #fff; }
+        
+        .capacity-bar { height: 10px; background: #222; border-radius: 10px; margin: 10px 0; overflow: hidden; }
+        #bar-fill { height: 100%; background: var(--gold); width: 0%; transition: 0.5s; }
+
+        .data-card { background: rgba(255,255,255,0.05); padding: 15px; margin: 10px 0; border-left: 5px solid var(--gold); display: flex; justify-content: space-between; align-items: center; }
+        .cancel-btn { background: var(--danger); color: white; width: auto; padding: 8px 15px; font-size: 0.8rem; border-radius: 4px; border: none; cursor: pointer; }
+
+        .delivery-tag { 
+            background: var(--glass); border: 2px dashed var(--gold); padding: 20px; text-align: center; 
+            margin-top: 40px; cursor: pointer; transition: 0.3s;
+        }
+        .delivery-tag:hover { background: rgba(212, 175, 55, 0.2); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a onclick="showSection('home')">Home & Menu</a>
+    <a onclick="showSection('bookings')">Table Bookings</a>
+    <a onclick="showSection('delivery')">Home Delivery</a>
+</nav>
+
+<!-- HOME & MENU SECTION -->
+<div id="home" class="page-section active">
+    <header>
+        <h1 class="gold-text" style="font-size: 3rem;">Royal Zauq</h1>
+        <p>Luxury Dining at its Finest</p>
+    </header>
+    
+    <div class="container">
+        <h2 class="gold-text" style="text-align: center; margin-bottom: 30px;">The Royal Feast Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-item"><h3 class="gold-text">Saffron Prawns</h3><p>Jumbo prawns marinated in Kashmiri saffron.</p><span class="price-tag">Rs. 2,800</span></div>
+            <div class="menu-item"><h3 class="gold-text">Mutton Mughlai</h3><p>Slow-cooked mutton in rich almond gravy.</p><span class="price-tag">Rs. 3,500</span></div>
+            <div class="menu-item"><h3 class="gold-text">Shahi Platter</h3><p>A mix of Seekh Kabab, Tikka, and Malai Boti.</p><span class="price-tag">Rs. 5,500</span></div>
+            <div class="menu-item"><h3 class="gold-text">Royal Biryani</h3><p>Long-grain basmati with prime beef cuts.</p><span class="price-tag">Rs. 1,850</span></div>
+            <div class="menu-item"><h3 class="gold-text">Paneer Reshmi</h3><p>Soft cottage cheese in velvet cream sauce.</p><span class="price-tag">Rs. 1,400</span></div>
+            <div class="menu-item"><h3 class="gold-text">Gold Leaf Kheer</h3><p>Traditional rice pudding with 24K gold leaf.</p><span class="price-tag">Rs. 1,200</span></div>
+            <div class="menu-item"><h3 class="gold-text">Peshawari Karahi</h3><p>Fresh lamb cooked in black pepper and ghee.</p><span class="price-tag">Rs. 3,200</span></div>
+            <div class="menu-item"><h3 class="gold-text">Zafrani Kulcha</h3><p>Soft tandoori bread with sesame and saffron.</p><span class="price-tag">Rs. 250</span></div>
+        </div>
+
+        <div class="delivery-tag" onclick="showSection('delivery')">
+            <h2 class="gold-text">Order Home Delivery</h2>
+            <p>Delivery Charges: Rs. 100 | Royal Taste at your Doorstep. Click to Order!</p>
+        </div>
+    </div>
+</div>
+
+<!-- BOOKING SECTION -->
+<div id="bookings" class="page-section">
+    <div class="container">
+        <h2 class="gold-text">Table Reservation (Max 60)</h2>
+        <div class="capacity-bar"><div id="bar-fill"></div></div>
+        <p id="cap-text">0 / 60 Tables Occupied</p>
+
+        <div class="royal-form">
+            <input type="text" id="bName" placeholder="Your Name">
+            <input type="text" id="bPhone" placeholder="Phone Number">
+            <input type="date" id="bDate">
+            <button id="bookBtn" onclick="addBooking()">Reserve Royal Table</button>
+        </div>
+
+        <h3 class="gold-text" style="margin-top: 40px;">Current Reservations</h3>
+        <div id="bookingList"></div>
+    </div>
+</div>
+
+<!-- DELIVERY SECTION -->
+<div id="delivery" class="page-section">
+    <div class="container">
+        <h2 class="gold-text">Royal Home Delivery</h2>
+        <p style="color: var(--gold);">Flat Delivery Fee: Rs. 100 applied to all orders.</p>
+        <div class="royal-form">
+            <input type="text" id="dName" placeholder="Full Name">
+            <input type="text" id="dPhone" placeholder="Contact Number">
+            <input type="text" id="dAddress" placeholder="Full Delivery Address">
+            <select id="dItem">
+                <option value="2800">Saffron Prawns - Rs. 2800</option>
+                <option value="3500">Mutton Mughlai - Rs. 3500</option>
+                <option value="5500">Shahi Platter - Rs. 5500</option>
+                <option value="1850">Royal Biryani - Rs. 1850</option>
+                <option value="1400">Paneer Reshmi - Rs. 1400</option>
+                <option value="3200">Peshawari Karahi - Rs. 3200</option>
+                <option value="1200">Gold Leaf Kheer - Rs. 1200</option>
+            </select>
+            <input type="number" id="dQty" value="1" min="1" placeholder="Quantity">
+            <button onclick="addOrder()">Place Delivery Order</button>
+        </div>
+
+        <h3 class="gold-text" style="margin-top: 40px;">Delivery Records</h3>
+        <div id="orderList"></div>
+    </div>
+</div>
+
+<script>
+    const MAX_TABLES = 60;
+    const DELIVERY_FEE = 100;
+
+    function showSection(id) {
+        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    window.onload = function() {
+        refreshData();
+    }
+
+    // --- BOOKING LOGIC ---
+    function addBooking() {
+        let name = document.getElementById('bName').value;
+        let phone = document.getElementById('bPhone').value;
+        let date = document.getElementById('bDate').value;
+        let bookings = JSON.parse(localStorage.getItem('r_bookings') || "[]");
+
+        if(bookings.length >= MAX_TABLES) {
+            alert("Palace is Full! No more bookings allowed today.");
+            return;
+        }
+
+        if(name && phone && date) {
+            bookings.push({ id: Date.now(), name, phone, date });
+            localStorage.setItem('r_bookings', JSON.stringify(bookings));
+            document.getElementById('bName').value = '';
+            document.getElementById('bPhone').value = '';
+            refreshData();
+            alert("Table Reserved Successfully!");
+        } else {
+            alert("Please fill all details.");
+        }
+    }
+
+    function cancelBooking(id) {
+        if(confirm("Cancel this reservation?")) {
+            let bookings = JSON.parse(localStorage.getItem('r_bookings') || "[]");
+            bookings = bookings.filter(b => b.id !== id);
+            localStorage.setItem('r_bookings', JSON.stringify(bookings));
+            refreshData();
+        }
+    }
+
+    // --- DELIVERY LOGIC ---
+    function addOrder() {
+        let name = document.getElementById('dName').value;
+        let phone = document.getElementById('dPhone').value;
+        let addr = document.getElementById('dAddress').value;
+        let qty = parseInt(document.getElementById('dQty').value);
+        let select = document.getElementById('dItem');
+        let itemPrice = parseInt(select.value);
+        let itemName = select.options[select.selectedIndex].text.split(' - ')[0];
+        
+        let orders = JSON.parse(localStorage.getItem('r_orders') || "[]");
+
+        if(name && addr && phone && qty > 0) {
+            let totalBill = (itemPrice * qty) + DELIVERY_FEE;
+            orders.push({ 
+                id: Date.now(), 
+                name, 
+                phone,
+                addr, 
+                item: itemName, 
+                qty: qty,
+                total: totalBill 
+            });
+            localStorage.setItem('r_orders', JSON.stringify(orders));
+            
+            // Reset fields
+            document.getElementById('dName').value = '';
+            document.getElementById('dAddress').value = '';
+            document.getElementById('dPhone').value = '';
+            
+            refreshData();
+            alert(Order Placed!\nTotal Bill (Inc. Delivery): Rs. ${totalBill});
+        } else {
+            alert("Please provide complete delivery details.");
+        }
+    }
+
+    function cancelOrder(id) {
+        if(confirm("Cancel this delivery order?")) {
+            let orders = JSON.parse(localStorage.getItem('r_orders') || "[]");
+            orders = orders.filter(o => o.id !== id);
+            localStorage.setItem('r_orders', JSON.stringify(orders));
+            refreshData();
+        }
+    }
+
+    // --- REFRESH UI ---
+    function refreshData() {
+        // Bookings
+        let bookings = JSON.parse(localStorage.getItem('r_bookings') || "[]");
+        document.getElementById('bar-fill').style.width = (bookings.length / MAX_TABLES * 100) + "%";
+        document.getElementById('cap-text').innerText = ${bookings.length} / ${MAX_TABLES} Tables Occupied;
+        document.getElementById('bookBtn').disabled = (bookings.length >= MAX_TABLES);
+
+        document.getElementById('bookingList').innerHTML = bookings.map(b => `
+            <div class="data-card">
+                <div><strong>${b.name}</strong><br><small>${b.date} | ${b.phone}</small></div>
+                <button class="cancel-btn" onclick="cancelBooking(${b.id})">Cancel</button>
+            </div>
+        `).join('');
+
+        // Orders
+        let orders = JSON.parse(localStorage.getItem('r_orders') || "[]");
+        document.getElementById('orderList').innerHTML = orders.map(o => `
+            <div class="data-card">
+                <div>
+                    <strong>${o.item} (x${o.qty})</strong><br>
+                    <small>Bill: Rs. ${o.total} | To: ${o.name}</small><br>
+                    <small>Loc: ${o.addr}</small>
+                </div>
+                <button class="cancel-btn" onclick="cancelOrder(${o.id})">Cancel Order</button>
+            </div>
+        `).join('');
+    }
+</script>
+
+</body>
+</html>KO
